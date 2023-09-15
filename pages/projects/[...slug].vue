@@ -1,5 +1,5 @@
 <template>
-  <MoleculesScroller class="ml-40">
+  <MoleculesScroller class="ml-32">
     <NuxtImg
       v-if="project?.content.title_image && project.content.title_image.filename"
       provider="storyblok"
