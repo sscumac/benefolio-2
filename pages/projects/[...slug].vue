@@ -1,5 +1,5 @@
 <template>
-  <MoleculesScroller class="ml-32">
+  <MoleculesScroller :defined-scroll-width="scrollLength" class="ml-32">
     <NuxtImg
       v-if="project?.content.title_image && project.content.title_image.filename"
       provider="storyblok"
@@ -43,18 +43,15 @@ const route = useRoute();
 let path = route.path;
 const storyblokApi = useStoryblokApi();
 
+const scrollLength = ref<number>(0);
+
 if (path.length > 2 && path.charAt(path.length - 1) === "/") {
   path = path.slice(0, -1);
 }
 
 const fullSlug = path === "/" || path === "" ? "home" : path;
 
-// console.log("fullSlug: ");
-// console.log(fullSlug);
-
 const { data: project } = await useAsyncData<ProjectStoryblok>(`${fullSlug}`, async () => {
-  console.log("syncing project data");
-
   const res = await storyblokApi.get(`cdn/stories${fullSlug}`, {});
   return res.data.story;
 });
@@ -67,6 +64,10 @@ const rotate = () => {
 onMounted(() => {
   if (project.value?.id) {
     useStoryblokBridge(project.value.id, (evStory) => (project.value = evStory));
+  }
+
+  if (project && project.value) {
+    scrollLength.value = project.value.content.images.length * 400;
   }
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper ml-20">
+  <div ref="template" class="wrapper ml-20">
     <div
       ref="scrollingWrapper"
       :class="`pt-[20vh] whitespace-nowrap h-[100vh] flex flex-col ${availableAlignment[align as keyof typeof availableAlignment]} sm:flex-row `"
@@ -19,29 +19,48 @@ const availableAlignment = {
   bottom: "items-end",
 };
 
-withDefaults(
+const props = withDefaults(
   defineProps<{
     align?: string;
+    definedScrollWidth?: number;
   }>(),
   {
     align: "center",
   }
 );
 
-const route = useRoute();
-let path = route.path;
+// const route = useRoute();
+// let path = route.path;
 
 const scrollingWrapper = ref();
+const template = ref();
+
+let scrollWidth = ref<number>(4000);
 
 onMounted(() => {
   const container: HTMLElement = scrollingWrapper.value;
+  const document: HTMLElement = template.value;
 
-  const width = container?.scrollWidth - 1000;
+  // console.log("container scrollwidth", container.scrollWidth);
+  // console.log("container client width", container.clientWidth);
+
+  setTimeout(() => console.log("container scrollwidth timed", container.scrollWidth), 100);
+
+  // const pinSpacer = document.getElementsByClassName("pin-spacer");
+
+  // setTimeout(() => console.log("pin spacer width: ", pinSpacer[0].offsetWidth), 100);
+  // setTimeout(() => console.log("pin spacer height: ", pinSpacer[0].offsetHeight), 100);
+
+  // const width = container?.scrollWidth - 1000;
+
+  if (props.definedScrollWidth && props.definedScrollWidth > 0) {
+    scrollWidth.value = props.definedScrollWidth;
+  }
 
   let mm = $gsap.matchMedia();
   mm.add("(min-width: 800px)", () => {
     $gsap.to(container, {
-      x: () => -width + "px",
+      x: () => -scrollWidth.value + "px",
       ease: "none",
       scrollTrigger: {
         trigger: container,
