@@ -1,8 +1,9 @@
 <template>
-  <div ref="template" class="wrapper ml-20">
+  <div ref="template" class="wrapper sm:ml-20">
     <div
       ref="scrollingWrapper"
-      :class="[paddingTop && 'pt-[20vh]', ` whitespace-nowrap h-[100vh] flex flex-col ${availableAlignment[align as keyof typeof availableAlignment]} sm:flex-row `]"
+      class="pt-36"
+      :class="[paddingTop ? 'sm:pt-[20vh]' : 'sm:pt-0', `whitespace-nowrap h-[100vh]  ${availableAlignment[align as keyof typeof availableAlignment]} flex flex-col sm:flex-row `]"
     >
       <slot />
     </div>
@@ -29,9 +30,6 @@ const props = withDefaults(
     align: "center",
   }
 );
-
-// const route = useRoute();
-// let path = route.path;
 
 const scrollingWrapper = ref();
 const template = ref();

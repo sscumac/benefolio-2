@@ -1,20 +1,22 @@
 <template>
-  <MoleculesScroller :defined-scroll-width="scrollLength" class="ml-32">
-    <NuxtImg
-      v-if="project?.content.title_image && project.content.title_image.filename"
-      provider="storyblok"
-      preset="general"
-      loading="lazy"
-      :src="project.content.title_image.filename"
-      width="640"
-      height="720"
-      class="object-contain sm:max-w-[250px] 2xl:max-w-[400px]"
-      :style="rotate()"
-    />
+  <MoleculesScroller :defined-scroll-width="scrollLength">
+    <div class="p-10 flex justify-center">
+      <NuxtImg
+        v-if="project?.content.title_image && project.content.title_image.filename"
+        provider="storyblok"
+        preset="general"
+        loading="lazy"
+        :src="project.content.title_image.filename"
+        width="640"
+        height="720"
+        class="max-w-[75%] sm:max-w-[250px] 2xl:max-w-[400px] object-cover"
+        :style="rotate()"
+      />
+    </div>
 
     <!-- <p v-if="project && project.content.text" class="ml-10 text-5xl">{{ textLength }}</p> -->
 
-    <div class="bg-white py-30 p-10 mx-40 sm:py-10" :style="textBoxWidth">
+    <div class="bg-white py-30 p-10 sm:mx-40 sm:py-10" :style="textBoxWidth">
       <h2 class="font-bold text-2xl py-2 whitespace-prewrap">
         {{ project?.name }}
       </h2>
@@ -74,9 +76,11 @@ const rotate = () => {
 };
 
 const textBoxWidth = computed(() => {
-  if (project && project.value?.content.text) {
-    const newTextLength = project.value?.content.text.content[0].content[0].text.length / 1.5;
-    return `min-width:${newTextLength > 800 ? newTextLength : 800}px`;
+  if (width.value > 799) {
+    if (project && project.value?.content.text) {
+      const newTextLength = project.value?.content.text.content[0].content[0].text.length / 1.5;
+      return `min-width:${newTextLength > 800 ? newTextLength : 800}px`;
+    }
   }
 });
 
