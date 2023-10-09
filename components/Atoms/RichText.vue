@@ -1,5 +1,5 @@
 <template>
-  <div v-if="text" class="prose" v-html="richContent" />
+  <div v-if="text" class="" v-html="richContent" />
 </template>
 
 <script setup lang="ts">

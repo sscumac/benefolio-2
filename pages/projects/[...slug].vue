@@ -12,15 +12,18 @@
       :style="rotate()"
     />
 
-    <div class="bg-white py-30 p-10 mx-40 sm:py-10 max-w-fit">
+    <!-- <p v-if="project && project.content.text" class="ml-10 text-5xl">{{ textLength }}</p> -->
+
+    <div class="bg-white py-30 p-10 mx-40 sm:py-10" :style="textBoxWidth">
       <h2 class="font-bold text-2xl py-2 whitespace-prewrap">
         {{ project?.name }}
       </h2>
       <h3 class="font-bold py-2 whitespace-prewrap">
         {{ project?.content.sub_title }}
       </h3>
-      <AtomsRichText class="whitespace-pre-wrap pt-2" :text="project?.content.text" />
-      <p class="pt-4">{{ project?.content.bottom_notice }}</p>
+      <AtomsRichText class="pt-2 whitespace-pre-wrap" :text="project?.content.text" />
+      <!-- <p class="whitespace-pre-wrap pt-4">{{ project?.content.text }}</p> -->
+      <p class="whitespace-pre-wrap pt-4">{{ project?.content.bottom_notice }}</p>
     </div>
     <NuxtImg
       v-for="pic in project?.content.images"
@@ -39,9 +42,16 @@
 
 <script setup lang="ts">
 import { ProjectStoryblok } from "~/ts/interfaces/storyblok";
+import { useWindowSize } from "@vueuse/core";
+
+const { width } = useWindowSize();
+
 const route = useRoute();
+
 let path = route.path;
 const storyblokApi = useStoryblokApi();
+
+const textLength = ref();
 
 const scrollLength = ref<number>(0);
 
@@ -56,18 +66,32 @@ const { data: project } = await useAsyncData<ProjectStoryblok>(`${fullSlug}`, as
   return res.data.story;
 });
 
+textLength.value = project.value?.content.text.content[0].content[0].text.length;
+
 const rotate = () => {
   const rotation = utils.rotateImg();
   return rotation;
 };
 
+const textBoxWidth = computed(() => {
+  if (project && project.value?.content.text) {
+    const newTextLength = project.value?.content.text.content[0].content[0].text.length / 1.5;
+    return `min-width:${newTextLength > 800 ? newTextLength : 800}px`;
+  }
+});
+
+if (project && project.value?.content.images) {
+  scrollLength.value = width.value + (textLength.value > 800 ? textLength.value / 4 : 200) + width.value / 10;
+}
+
 onMounted(() => {
   if (project.value?.id) {
     useStoryblokBridge(project.value.id, (evStory) => (project.value = evStory));
   }
-
-  if (project && project.value) {
-    scrollLength.value = project.value.content.images.length * 400;
-  }
 });
 </script>
+<style>
+.pin-spacer {
+  top: 60px !important;
+}
+</style>
