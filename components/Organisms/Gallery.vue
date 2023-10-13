@@ -3,7 +3,7 @@
     <div
       v-for="project in allProjects"
       :key="project.id"
-      class="card-any py-30 p-10 sm:py-10 sm:m-20 relative h-[50vh] w-full sm:w-[400px] 2xl:w-[600px] flex flex-col"
+      class="py-30 p-10 sm:py-10 sm:m-20 relative h-[50vh] w-full sm:w-[400px] flex flex-col"
       :class="randomFlexPosition()"
     >
       <nuxt-link :to="`projects/${project.slug}`" class="flex justify-center items-center">
@@ -19,7 +19,7 @@
           :src="project.content.title_image.filename"
           width="640"
           height="720"
-          class="max-w-[75%] sm:max-w-[250px] 2xl:max-w-[400px] object-cover"
+          class="max-w-[75%] xs:max-w-[50%] sm:max-w-[280px] 2xl:max-w-[400px]"
           :style="rotate()"
         />
       </nuxt-link>
@@ -33,6 +33,8 @@ import utils from "~/utils/utils";
 import { useWindowSize } from "@vueuse/core";
 
 const { width } = useWindowSize();
+
+const definedScrollWidth = ref<number>(0);
 
 const { data: allProjects } = await useAsyncData<any>("projects", async () => {
   const res = await storyblokApi.get(`cdn/stories`, {
@@ -51,7 +53,14 @@ const rotate = () => {
   return rotation;
 };
 
-const definedScrollWidth = computed(() => {
-  return allProjects.value.length * (width.value / 4) + width.value / 4;
-});
+if (allProjects.value?.length) {
+  // get length for all project images
+  let length = allProjects.value.length * 400;
+  // unused length approx. 1/2 of screen width
+  const unusedLength = width.value - length / 2;
+  // for larger screens subtract unused length from total length
+  length = width.value > 1600 ? length - unusedLength : length;
+  // for smaller screens (e.g. Ipad Pro) add half of screen width to total length
+  definedScrollWidth.value = width.value < 1440 ? length + width.value / 2 : length;
+}
 </script>
