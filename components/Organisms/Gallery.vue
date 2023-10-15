@@ -54,13 +54,8 @@ const rotate = () => {
 };
 
 if (allProjects.value?.length) {
-  // get length for all project images
-  let length = allProjects.value.length * 400;
-  // unused length approx. 1/2 of screen width
-  const unusedLength = width.value - length / 2;
-  // for larger screens subtract unused length from total length
-  length = width.value > 1600 ? length - unusedLength : length;
-  // for smaller screens (e.g. Ipad Pro) add half of screen width to total length
-  definedScrollWidth.value = width.value < 1440 ? length + width.value / 2 : length;
+  // get length for all project containers (for larger text boxes calculate a little less)
+  let length = allProjects.value.length * 400 + 600;
+  definedScrollWidth.value = utils.getMediaScrollWidth(length, width.value);
 }
 </script>

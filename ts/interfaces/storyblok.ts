@@ -28,14 +28,15 @@ interface ProjectContentStoryblok {
 }
 
 interface ImpressumStoryblok {
-  text_element: ISbRichtext[] | any;
+  text_element: ISbRichtext;
+  _uid: string;
 }
 
 export interface InfoStoryblok {
   credits: string;
   kontakt: string;
   portrait: ImageStoryblok;
-  impressum: ImpressumStoryblok;
+  impressum: ImpressumStoryblok[];
   info_text: ISbRichtext;
 }
 

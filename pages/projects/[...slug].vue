@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="bg-white py-30 p-10 sm:mx-20 sm:py-10" :style="textBoxStyle">
+    <div class="bg-white py-30 p-6 sm:mx-20 sm:py-10" :style="textBoxStyle">
       <h2 class="font-bold text-2xl py-2 whitespace-prewrap">
         {{ project?.name }}
       </h2>
@@ -89,24 +89,10 @@ if (width.value > 799) {
 
 if (project.value?.content.images) {
   // get length for all project containers (for larger text boxes calculate a little less)
-  let length =
-    project.value?.content.images.length * 400 +
-    (textBoxWidth.value < 1000 ? textBoxWidth.value : textBoxWidth.value * 0.8) +
-    400;
-  // unused length approx. 1/2 of screen width
-  const unusedLength = width.value - length / 2;
-  // for larger screens subtract unused length from total length
-  length = length - unusedLength;
-  if (width.value < 1440) {
-    // smaller screens (e.g. Ipad Pro)
-    scrollLength.value = length - width.value / 2;
-  } else if (width.value > 1600) {
-    scrollLength.value = length;
-  } else {
-    // larger screens
-    scrollLength.value = length - width.value / 4;
-  }
+  let length = project.value?.content.images.length * 400 + textBoxWidth.value + 400;
+  scrollLength.value = utils.getMediaScrollWidth(length, width.value);
 }
+
 const randomFlexPosition = () => {
   const pos = utils.randomFlexPosition();
   return pos;

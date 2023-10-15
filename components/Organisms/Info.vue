@@ -1,5 +1,4 @@
 <template>
-  <!-- <pre class="pt-32">{{ blok.impressum }}</pre> -->
   <MoleculesScroller align="top" :padding-top="true" :defined-scroll-width="scrollWidth" v-if="blok">
     <NuxtImg
       v-if="blok.portrait && blok.portrait.filename"
@@ -9,15 +8,15 @@
       :src="blok.portrait.filename"
       width="640"
       height="720"
-      class="object-contain sm:max-w-[250px] 2xl:max-w-[400px]"
+      class="object-contain sm:max-w-[280px] 2xl:max-w-[400px]"
     />
 
-    <AtomsRichText :text="blok.info_text" class="whitespace-pre-wrap bg-white p-6 mx-10 min-w-[575px]" />
+    <AtomsRichText :text="blok.info_text" class="whitespace-pre-wrap bg-white p-6 mx-10 sm:min-w-[600px]" />
 
     <AtomsRichText
       v-for="textBox in blok.impressum"
       :key="textBox._uid"
-      class="whitespace-pre-wrap bg-white p-6 mx-10 min-w-[575px]"
+      class="whitespace-pre-wrap bg-white p-6 mx-10 min-w-[600px]"
       :text="textBox.text_element"
     />
   </MoleculesScroller>
@@ -31,9 +30,16 @@ const { width } = useWindowSize();
 
 const scrollWidth = ref();
 
-defineProps<{
+const props = defineProps<{
   blok: InfoStoryblok;
 }>();
 
-scrollWidth.value = width.value + width.value / 2;
+// scrollWidth.value = width.value;
+scrollWidth.value = width.value + (width.value > 1440 ? width.value / 2 : width.value / 4);
+
+if (props.blok?.impressum) {
+  // get length for all project containers (for larger text boxes calculate a little less)
+  let length = props.blok.impressum.length * 600 + 600;
+  scrollWidth.value = utils.getMediaScrollWidth(length, width.value);
+}
 </script>
