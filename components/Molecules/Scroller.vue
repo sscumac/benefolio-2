@@ -3,7 +3,12 @@
     <div
       ref="scrollingWrapper"
       class="pt-36"
-      :class="[paddingTop ? 'sm:pt-[15vh]' : 'sm:pt-0', `whitespace-nowrap h-[100vh]  ${availableAlignment[align as keyof typeof availableAlignment]} flex flex-col sm:flex-row `]"
+      :class="[
+        paddingTop ? 'sm:pt-[15vh]' : 'sm:pt-0',
+        `whitespace-nowrap h-[100vh]  ${
+          availableAlignment[align as keyof typeof availableAlignment]
+        } flex flex-col sm:flex-row `,
+      ]"
     >
       <slot />
     </div>
