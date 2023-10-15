@@ -30,4 +30,13 @@ export default {
     index = index < 5 ? index * -3 : index * 3;
     return `transform: rotate(${index}deg)`;
   },
+  getMediaScrollWidth(length, screenWidth) {
+    if (screenWidth < 1440) {
+      return length - screenWidth * 0.2;
+    } else if (screenWidth > 2430) {
+      return length - screenWidth * 0.6;
+    } else {
+      return length - screenWidth * 0.4;
+    }
+  },
 };
