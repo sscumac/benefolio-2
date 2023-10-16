@@ -55,7 +55,7 @@ const rotate = () => {
 
 if (allProjects.value?.length) {
   // get length for all project containers (for larger text boxes calculate a little less)
-  let length = allProjects.value.length * 400 + 600;
+  let length = allProjects.value.length * 400 + 800;
   definedScrollWidth.value = utils.getMediaScrollWidth(length, width.value);
 }
 </script>
