@@ -11,12 +11,12 @@
       class="object-contain sm:max-w-[280px] 2xl:max-w-[400px]"
     />
 
-    <AtomsRichText :text="blok.info_text" class="whitespace-pre-wrap bg-white p-6 mx-10 sm:min-w-[600px]" />
+    <AtomsRichText :text="blok.info_text" class="whitespace-pre-wrap bg-white p-6 sm:mx-10 sm:min-w-[600px]" />
 
     <AtomsRichText
       v-for="textBox in blok.impressum"
       :key="textBox._uid"
-      class="whitespace-pre-wrap bg-white p-6 mx-10 min-w-[600px]"
+      class="whitespace-pre-wrap bg-white p-6 sm:mx-10 sm:min-w-[600px]"
       :text="textBox.text_element"
     />
   </MoleculesScroller>

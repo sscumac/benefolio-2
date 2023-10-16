@@ -14,7 +14,7 @@
       />
     </div>
 
-    <div class="bg-white py-30 p-6 sm:mx-20 sm:py-10" :style="textBoxStyle">
+    <div class="bg-white z-10 py-30 p-6 sm:mx-20 sm:py-10" :style="textBoxStyle">
       <h2 class="font-bold text-2xl py-2 whitespace-prewrap">
         {{ project?.name }}
       </h2>
@@ -27,7 +27,7 @@
     <div
       v-for="pic in project?.content.images"
       :key="pic.id"
-      class="card-any py-30 p-10 sm:py-10 sm:m-20 relative h-[50vh] w-full sm:w-[400px] flex flex-col"
+      class="p-10 sm:py-10 sm:m-20 relative h-[50vh] w-full sm:w-[400px] flex flex-col items-center"
       :class="randomFlexPosition()"
     >
       <NuxtImg
@@ -72,7 +72,7 @@ const { data: project } = await useAsyncData<ProjectStoryblok>(`${fullSlug}`, as
   return res.data.story;
 });
 
-textLength.value = project.value?.content.text.content[0].content[0].text.length;
+if (project.value?.content.text) textLength.value = project.value?.content.text.content[0].content[0].text.length;
 
 const rotate = () => {
   const rotation = utils.rotateImg();
