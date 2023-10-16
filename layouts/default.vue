@@ -1,5 +1,5 @@
 <template>
-  <div class="flex min-h-screen flex-col overflow-x-hidden sm:overflow-hidden">
+  <div class="flex min-h-screen flex-col sm:overflow-hidden">
     <OrganismsHeader class="fixed z-20" />
     <main id="main">
       <img

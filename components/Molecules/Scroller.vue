@@ -2,12 +2,10 @@
   <div ref="template" class="wrapper sm:ml-20">
     <div
       ref="scrollingWrapper"
-      class="pt-36"
+      class="pt-36 relative z-10 sm:whitespace-nowrap h-[100vh] flex flex-col sm:flex-row"
       :class="[
-        paddingTop ? 'sm:pt-[15vh]' : 'sm:pt-0',
-        `whitespace-nowrap h-[100vh]  ${
-          availableAlignment[align as keyof typeof availableAlignment]
-        } flex flex-col sm:flex-row `,
+        paddingTop ? 'pt-28 sm:pt-[15vh]' : 'sm:pt-0',
+        `  ${availableAlignment[align as keyof typeof availableAlignment]}  `,
       ]"
     >
       <slot />
