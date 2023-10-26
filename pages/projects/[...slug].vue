@@ -7,9 +7,7 @@
         preset="general"
         loading="lazy"
         :src="project.content.title_image.filename"
-        width="640"
-        height="720"
-        class="max-w-[75%] xs:max-w-[50%] sm:max-w-[280px] 2xl:max-w-[400px]"
+        class="max-w-[75%] xs:max-w-[50%] sm:max-w-[400px]"
         :style="rotate()"
       />
     </div>
@@ -36,9 +34,7 @@
         loading="lazy"
         :alt="pic.alt"
         :src="pic.filename"
-        width="640"
-        height="720"
-        class="max-w-[75%] object-cover sm:max-w-[250px] 2xl:max-w-[400px] mx-20"
+        class="max-w-[75%] object-cover sm:max-w-[400px] mx-20"
         :style="rotate()"
       />
     </div>

@@ -3,9 +3,9 @@
     <OrganismsHeader class="fixed z-20" />
     <main id="main">
       <img
-        src="~/assets/grid.png"
+        src="~/assets/minimal_halftone_pattern_background.jpg"
         alt="background grid"
-        class="w-full xl:scale-100 min-h-screen object-cover fixed opacity-50"
+        class="fixed min-h-screen opacity-50"
       />
       <slot />
     </main>
