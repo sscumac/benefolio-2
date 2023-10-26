@@ -4,7 +4,7 @@
     <main id="main">
       <img
         src="~/assets/minimal_halftone_pattern_background.jpg"
-        alt="background grid"
+        alt="background"
         class="fixed min-h-screen opacity-50"
       />
       <slot />
