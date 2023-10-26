@@ -7,7 +7,7 @@
       :class="randomFlexPosition()"
     >
       <nuxt-link :to="`projects/${project.slug}`" class="flex justify-center items-center">
-        <h2 class="absolute z-10 p-1 px-4 bg-white whitespace-normal">
+        <h2 class="absolute w-full text-center z-10 p-1 px-4 bg-white whitespace-normal">
           {{ project.name }}
         </h2>
 
@@ -17,9 +17,7 @@
           preset="general"
           loading="lazy"
           :src="project.content.title_image.filename"
-          width="640"
-          height="720"
-          class="max-w-[75%] xs:max-w-[50%] sm:max-w-[280px] 2xl:max-w-[400px]"
+          class="max-w-[75%] xs:max-w-[50%] sm:max-w-[400px]"
           :style="rotate()"
         />
       </nuxt-link>

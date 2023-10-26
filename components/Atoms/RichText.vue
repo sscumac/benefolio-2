@@ -1,5 +1,5 @@
 <template>
-  <div v-if="text" class="prose max-w-[unset]" v-html="richContent" />
+  <div v-if="text" class="prose prose-a:text-goldenred max-w-[unset]" v-html="richContent" />
 </template>
 
 <script setup lang="ts">
