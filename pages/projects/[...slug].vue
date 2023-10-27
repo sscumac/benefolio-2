@@ -42,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { ProjectStoryblok } from "~/ts/interfaces/storyblok";
+import { type ProjectStoryblok } from "~/ts/interfaces/storyblok";
 import { useWindowSize } from "@vueuse/core";
 
 const { width } = useWindowSize();

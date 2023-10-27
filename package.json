@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "@hypernym/nuxt-gsap": "^2.2.2",
+    "@nuxt/devtools": "^1.0.0",
+    "@nuxt/image": "^1.0.0",
     "@nuxtjs/tailwindcss": "^6.7.0",
     "@sidebase/nuxt-session": "^0.2.7",
     "@tailwindcss/typography": "^0.5.9",

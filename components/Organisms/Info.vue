@@ -23,7 +23,7 @@
 </template>
 
 <script setup lang="ts">
-import { InfoStoryblok } from "~/ts/interfaces/storyblok";
+import { type InfoStoryblok } from "~/ts/interfaces/storyblok";
 import { useWindowSize } from "@vueuse/core";
 
 const { width } = useWindowSize();

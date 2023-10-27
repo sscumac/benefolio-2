@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { StoryStoryblok } from "~~/ts/interfaces/storyblok";
+import { type StoryStoryblok } from "~~/ts/interfaces/storyblok";
 
 const route = useRoute();
 let path = route.path;

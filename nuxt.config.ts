@@ -23,19 +23,14 @@ export default defineNuxtConfig({
     transpile: ["fsevents"], // transpilation: 'source to source' compiler which translates one higher level language to another higher level language (while compilation converts code into machine understandable code)
   },
   storyblokApi: ["@storyblok/nuxt"],
-  modules: [
-    "@nuxtjs/tailwindcss",
-    "@hypernym/nuxt-gsap",
-    "@nuxt/image-edge",
-    [
-      "@storyblok/nuxt",
+  modules: ["@nuxtjs/tailwindcss", "@hypernym/nuxt-gsap", "@nuxt/image-edge", [
+    "@storyblok/nuxt",
 
-      {
-        accessToken: process.env.STORYBLOK_KEY,
-        devtools: true,
-      },
-    ],
-  ],
+    {
+      accessToken: process.env.STORYBLOK_KEY,
+      devtools: true,
+    },
+  ], "@nuxt/image"],
   image: {
     storyblok: {
       baseURL: "https://a.storyblok.com",
