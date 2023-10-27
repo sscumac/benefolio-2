@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { ISbRichtext } from "@storyblok/vue";
+import { type ISbRichtext } from "@storyblok/vue";
 
 const props = defineProps<{
   text: ISbRichtext;

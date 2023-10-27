@@ -1,4 +1,4 @@
-import { ISbRichtext } from "@storyblok/vue";
+import type { ISbRichtext } from "@storyblok/vue";
 
 interface TagStoryblok {
   text: string;
