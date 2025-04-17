@@ -5,32 +5,18 @@ export default defineNuxtConfig({
       scrollTrigger: true,
     },
   },
-
-  // @ts-ignore
-  // routeRules: {
-  //   "/preview/**": { ssr: false },
-  // },
   runtimeConfig: {
     storyBlokToken: process.env.STORYBLOK_KEY,
   },
-
-  // generate: {
-  //   routes: [
-  //     "//common-goods-common-benefitscommon-goods-common-benefits",
-  //     "/test",
-  //   ],
-  // },
   build: {
     transpile: ["fsevents"], // transpilation: 'source to source' compiler which translates one higher level language to another higher level language (while compilation converts code into machine understandable code)
   },
-  storyblokApi: ["@storyblok/nuxt"],
   modules: [
     "@nuxtjs/tailwindcss",
     "@hypernym/nuxt-gsap",
     "@nuxt/image-edge",
     [
       "@storyblok/nuxt",
-
       {
         accessToken: process.env.STORYBLOK_KEY,
         devtools: true,
@@ -38,7 +24,6 @@ export default defineNuxtConfig({
     ],
     "@nuxt/image",
   ],
-
   image: {
     storyblok: {
       baseURL: "https://a.storyblok.com",
@@ -52,6 +37,4 @@ export default defineNuxtConfig({
       },
     },
   },
-
-  compatibilityDate: "2025-04-17",
 });
