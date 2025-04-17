@@ -10,9 +10,17 @@ export default defineNuxtConfig({
     storyBlokToken: process.env.STORYBLOK_KEY,
   },
 
+  // generate: {
+  //   routes: [
+  //     "//common-goods-common-benefitscommon-goods-common-benefits",
+  //     "/test",
+  //   ],
+  // },
   build: {
     transpile: ["fsevents"], // transpilation: 'source to source' compiler which translates one higher level language to another higher level language (while compilation converts code into machine understandable code)
   },
+
+  storyblokApi: ["@storyblok/nuxt"],
 
   modules: [
     "@nuxtjs/tailwindcss",
@@ -20,6 +28,7 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     [
       "@storyblok/nuxt",
+
       {
         accessToken: process.env.STORYBLOK_KEY,
         devtools: true,
