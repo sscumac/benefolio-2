@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "esbuild": "0.25.2",
     "@hypernym/nuxt-gsap": "^2.2.2",
     "@nuxt/devtools": "^1.0.0",
     "@nuxt/image": "^1.0.0",
@@ -16,7 +17,7 @@
     "@sidebase/nuxt-session": "^0.2.7",
     "@tailwindcss/typography": "^0.5.9",
     "@types/node": "^18",
-    "nuxt": "^3.5.2"
+    "nuxt": "^3.6.0"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.13",
