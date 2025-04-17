@@ -7,7 +7,7 @@
       :class="randomFlexPosition()"
     >
       <nuxt-link :to="`projects/${project.slug}`" class="flex justify-center items-center">
-        <h2 class="absolute w-[120%] text-center z-10 p-1 px-4 bg-white whitespace-normal">
+        <h2 class="absolute w-full sm:w-[120%] text-center z-10 p-1 px-4 bg-white whitespace-normal">
           {{ project.name }}
         </h2>
 

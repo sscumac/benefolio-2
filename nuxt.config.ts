@@ -6,10 +6,6 @@ export default defineNuxtConfig({
     },
   },
 
-  // @ts-ignore
-  // routeRules: {
-  //   "/preview/**": { ssr: false },
-  // },
   runtimeConfig: {
     storyBlokToken: process.env.STORYBLOK_KEY,
   },
@@ -26,14 +22,20 @@ export default defineNuxtConfig({
 
   storyblokApi: ["@storyblok/nuxt"],
 
-  modules: ["@nuxtjs/tailwindcss", "@hypernym/nuxt-gsap", "@nuxt/image-edge", [
-    "@storyblok/nuxt",
+  modules: [
+    "@nuxtjs/tailwindcss",
+    "@hypernym/nuxt-gsap",
+    "@nuxt/image-edge",
+    [
+      "@storyblok/nuxt",
 
-    {
-      accessToken: process.env.STORYBLOK_KEY,
-      devtools: true,
-    },
-  ], "@nuxt/image"],
+      {
+        accessToken: process.env.STORYBLOK_KEY,
+        devtools: true,
+      },
+    ],
+    "@nuxt/image",
+  ],
 
   image: {
     storyblok: {
