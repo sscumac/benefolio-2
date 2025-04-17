@@ -4,7 +4,7 @@
     <main
       id="main"
       style="
-        background-image: url(&quot;/linien_hand.png&quot;);
+        background-image: url(&quot;/linien.png&quot;);
         background-size: cover;
         background-repeat: repeat;
         background-size: contain;
