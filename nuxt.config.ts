@@ -5,12 +5,15 @@ export default defineNuxtConfig({
       scrollTrigger: true,
     },
   },
+
   runtimeConfig: {
     storyBlokToken: process.env.STORYBLOK_KEY,
   },
+
   build: {
     transpile: ["fsevents"], // transpilation: 'source to source' compiler which translates one higher level language to another higher level language (while compilation converts code into machine understandable code)
   },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@hypernym/nuxt-gsap",
@@ -24,6 +27,7 @@ export default defineNuxtConfig({
     ],
     "@nuxt/image",
   ],
+
   image: {
     storyblok: {
       baseURL: "https://a.storyblok.com",
@@ -37,4 +41,6 @@ export default defineNuxtConfig({
       },
     },
   },
+
+  compatibilityDate: "2025-04-17",
 });
