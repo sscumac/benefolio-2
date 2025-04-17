@@ -22,6 +22,8 @@ interface ImageStoryblok {
 interface ProjectContentStoryblok {
   title_image: ImageStoryblok;
   text: ISbRichtext | any;
+  text2: ISbRichtext | any;
+  text2_position: string;
   images: ImageStoryblok[];
   sub_title: string;
   bottom_notice: string;
