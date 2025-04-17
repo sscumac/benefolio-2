@@ -77,7 +77,7 @@
         project?.content?.text2 &&
         text2position &&
         text2position > 0 &&
-        text2position > project?.content?.images?.length
+        text2position >= project?.content?.images?.length
       "
       class="bg-white sm:w-[800px] z-10 p-6 sm:mx-20"
       :style="textBoxStyle"
